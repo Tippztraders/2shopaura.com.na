@@ -97,8 +97,7 @@ body {
     transform: translateX(-50%);
     z-index: 2;
     text-align: center;
-    width: auto;
-    max-width: 95%;
+    white-space: nowrap; /* keeps all nav items on one line */
 }
 
 .banner .nav-list {
@@ -155,4 +154,3 @@ body {
         font-size: 0.8rem;
         padding: 0.3em 0.6em;
     }
-}
