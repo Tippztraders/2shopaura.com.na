@@ -13,39 +13,62 @@ body {
 
 /* Pre-header styling */
 .pre-header {
-    background-color: #3a8bcd;     /* #333 */
+    background-color: #3a8bcd;
     color: #fff;
     text-align: center;
     padding: 8px 0;
     font-size: 14px;
 }
 
-/* Header and navigation styling */
+/* Header and slideshow styling */
 .header {
+    position: relative;
     width: 100%;
-    position: absolute; /* Allows content like the banner to show behind it */
+    height: 40vh;           /* Responsive height (adjust as you like) */
+    min-height: 150px;      /* Safe minimum for small screens */
+    overflow: hidden;
+}
+
+.slideshow {
+    position: absolute;
     top: 0;
     left: 0;
-    z-index: 100; /* Ensures nav is on top of other content */
-    padding: 20px 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;             /* Behind logo/nav */
+}
+
+.slideshow .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;           /* Fill full header height */
+    object-fit: cover;      /* Prevents distortion */
+    object-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slideshow .slide.active {
+    opacity: 1;
 }
 
 .header-container {
+    position: relative;     /* Stay above slideshow */
+    z-index: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 20px;
 }
-
 .logo {
-    height: 40px; /* Adjust logo size as needed */
+    height: 40px;
 }
 
 .main-nav .nav-list {
     list-style: none;
-    display: flex; /* Ensures list items are on a single line */
+    display: flex;
 }
 
 .nav-item {
@@ -64,41 +87,41 @@ body {
     color: #d1d1d1;
 }
 
-/* Full-width responsive banner */
+
+
+/* BANNER lady-selfies */
 .banner {
     width: 100%;
-    overflow: hidden; /* Prevents horizontal scroll from large images */
+    position: relative;
+    overflow: hidden;       /* Prevents horizontal scroll and gaps */
+    height: 40vh;           /* Default height: 40% of viewport height, adjustable */
+    min-height: 300px;      /* Ensures small screens still have a visible banner */
 }
 
+/* Full-width banner */
 .banner-image {
     width: 100%;
-    height: auto;
+    display: block;
+
+/* Banner image inside the container */
+.banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;      /* Maintains aspect ratio, fills container */
+    object-position: center; /* Center the image vertically/horizontally */
     display: block;
 }
 
-/* Responsive adjustments for smaller screens */
+/* Adjust banner height for different devices */
 @media (max-width: 768px) {
-    .header {
-        position: relative; /* Prevent overlap on small screens */
-        background-color: rgba(0, 0, 0, 0.7); /* Add a background for readability */
-    }
-
-    .header-container {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .main-nav {
-        margin-top: 15px;
-    }
-
-    .main-nav .nav-list {
-        display: flex; /* Kept on one line */
-        justify-content: center;
-        flex-wrap: nowrap; /* Prevents stacking on mobile */
-    }
-
-    .nav-item {
-        margin: 0 10px; /* Adjust horizontal spacing */
+    .banner {
+        height: 30vh;      /* Slightly shorter on mobile */
     }
 }
+
+@media (min-width: 1200px) {
+    .banner {
+        height: 50vh;      /* Taller on large desktop screens */
+    }
+}
+/* end of Banner */
