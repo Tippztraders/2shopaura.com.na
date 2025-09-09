@@ -1,0 +1,104 @@
+/* Universal and body styling for modern look */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: #f5f5f5;
+    line-height: 1.6;
+}
+
+/* Pre-header styling */
+.pre-header {
+    background-color: #3a8bcd;     /* #333 */
+    color: #fff;
+    text-align: center;
+    padding: 8px 0;
+    font-size: 14px;
+}
+
+/* Header and navigation styling */
+.header {
+    width: 100%;
+    position: absolute; /* Allows content like the banner to show behind it */
+    top: 0;
+    left: 0;
+    z-index: 100; /* Ensures nav is on top of other content */
+    padding: 20px 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    height: 40px; /* Adjust logo size as needed */
+}
+
+.main-nav .nav-list {
+    list-style: none;
+    display: flex; /* Ensures list items are on a single line */
+}
+
+.nav-item {
+    margin-left: 25px;
+}
+
+.nav-item a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.nav-item a:hover {
+    color: #d1d1d1;
+}
+
+/* Full-width responsive banner */
+.banner {
+    width: 100%;
+    overflow: hidden; /* Prevents horizontal scroll from large images */
+}
+
+.banner-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .header {
+        position: relative; /* Prevent overlap on small screens */
+        background-color: rgba(0, 0, 0, 0.7); /* Add a background for readability */
+    }
+
+    .header-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .main-nav {
+        margin-top: 15px;
+    }
+
+    .main-nav .nav-list {
+        display: flex; /* Kept on one line */
+        justify-content: center;
+        flex-wrap: nowrap; /* Prevents stacking on mobile */
+    }
+
+    .nav-item {
+        margin: 0 10px; /* Adjust horizontal spacing */
+    }
+}
