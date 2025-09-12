@@ -10,3 +10,29 @@ function showNextSlide() {
 
 // Change every 5 seconds
 setInterval(showNextSlide, 5000);
+
+
+
+
+
+$(document).ready(function(){
+  $(".owl-carousel").owlCarousel({
+    items: 3,
+    margin: 30,
+    loop: true,
+    autoplay: true,
+    autoplayTimeout: 3000,
+    autoplayHoverPause: true,
+    responsive: {
+      0: {
+        items: 1
+      },
+      768: {
+        items: 2
+      },
+      1024: {
+        items: 3
+      }
+    }
+  });
+});
