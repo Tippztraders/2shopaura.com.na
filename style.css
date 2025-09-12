@@ -366,12 +366,17 @@ main, .featured-items, .banner {
   height: 100%;
 }
 
+.swiper-modal .swiper-wrapper {
+  height: 100%;
+}
+
 .swiper-modal .swiper-slide img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  display: block;
+  margin: 0 auto;
 }
-
 
 .swiper-close {
   position: absolute;
@@ -380,8 +385,9 @@ main, .featured-items, .banner {
   text-align: center;
   color: #fff;
   font-size: 14px;
+  pointer-events: auto;
+  cursor: pointer;
 }
-/* end of Swiper Modal */
 
 
 
