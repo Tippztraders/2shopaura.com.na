@@ -1,8 +1,12 @@
-/* Universal and body styling for modern look */
+/* === Universal and Body Styling === */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
 }
 
 body {
@@ -11,7 +15,7 @@ body {
     line-height: 1.6;
 }
 
-/* Pre-header styling */
+/* === Pre-header === */
 .pre-header {
     background-color: #3a8bcd;
     color: #fff;
@@ -20,12 +24,12 @@ body {
     font-size: 14px;
 }
 
-/* Header and slideshow styling */
+/* === Header & Slideshow === */
 .header {
     position: relative;
     width: 100%;
-    height: 40vh;           /* Responsive height (adjust as you like) */
-    min-height: 150px;      /* Safe minimum for small screens */
+    height: 40vh;
+    min-height: 150px;
     overflow: hidden;
 }
 
@@ -35,14 +39,14 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;             /* Behind logo/nav */
+    z-index: 0;
 }
 
 .slideshow .slide {
     position: absolute;
     width: 100%;
-    height: 100%;           /* Fill full header height */
-    object-fit: cover;      /* Prevents distortion */
+    height: 100%;
+    object-fit: cover;
     object-position: center;
     opacity: 0;
     transition: opacity 1s ease-in-out;
@@ -53,8 +57,8 @@ body {
 }
 
 .header-container {
-    position: relative;     /* Stay above slideshow */
-    z-index: 1;
+    position: relative;
+    z-index: 2; /* above slideshow */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -67,62 +71,46 @@ body {
     height: 40px;
 }
 
-
-
-
-/* == BANNER == */
+/* === Banner === */
 .banner {
     position: relative;
     width: 100%;
+    min-height: 40vh;
     overflow: hidden;
 }
 
 .banner-image {
     width: 100%;
+    height: 100%;
     display: block;
     object-fit: cover;
+    object-position: center;
 }
 
-
-
-
-
-
-
-/* == NAV INSIDE BANNER == */
+/* === Navigation Inside Banner === */
+/* === Navigation Inside Banner === */
 .banner .main-nav {
     position: absolute;
     top: 1rem;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 2;
+    z-index: 3; /* on top of banner */
     text-align: center;
-    white-space: nowrap; /* keeps all nav items on one line */
+    white-space: nowrap; /* prevents nav links from breaking to next line */
 }
 
 .banner .nav-list {
     display: flex;
-    justify-content: center; /* Center the links */
-    flex-wrap: nowrap; /* PREVENT WRAPPING */
+    justify-content: center;
+    flex-wrap: nowrap;  /* prevents flex items from wrapping */
     gap: 1em;
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-/* You can remove the following, as `gap` handles the spacing */
-/*
-.banner .nav-item {
-    margin: 0;
-}
-
-.banner .nav-item + .nav-item {
-    margin-left: 1rem;
-}
-*/
-
 .banner .nav-item a {
-    background-color: rgba(0, 0, 0, 0.25); /* soft black button */
+    background-color: rgba(0, 0, 0, 0.25);
     color: #fff;
     text-decoration: none;
     font-weight: 600;
@@ -140,9 +128,8 @@ body {
 /* Responsive tweaks */
 @media (max-width: 768px) {
     .banner .nav-list {
-        gap: 0.5em; /* Reduce spacing slightly on mobile if needed */
+        gap: 0.5em; /* reduce spacing on smaller screens */
     }
-
     .banner .nav-item a {
         font-size: 0.9rem;
         padding: 0.4em 0.8em;
@@ -154,3 +141,406 @@ body {
         font-size: 0.8rem;
         padding: 0.3em 0.6em;
     }
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop-Aura</title>
+    <link rel="stylesheet" href="style.css">
+  
+  <!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+<!-- Owl Carousel CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+  
+  
+  
+</head>
+<body>
+
+    <!-- Pre-header section -->
+    <div class="pre-header">
+        <p>"Quality You Need. Variety You’ll Love"</p>
+    </div>
+
+    <!-- Header with slideshow behind logo/nav -->
+    <header class="header">
+        <div class="slideshow">
+            <img src="https://i.postimg.cc/HLkvDvgk/134043.jpg" class="slide active" alt="Slide 1">
+            <img src="https://i.postimg.cc/RV1g3xC0/11235302-10543.jpg" class="slide" alt="Slide 2">
+            <img src="https://i.postimg.cc/HLr09qmX/40486493-8852975.jpg" class="slide" alt="Slide 3">
+        </div>
+
+        <div class="header-container">
+            <a href="#" class="logo-link">
+                <img src="https://i.postimg.cc/SsR36cpZ/Logo.png" class="logo" alt="Company Logo">
+            </a>
+        </div>
+    </header>
+
+    <!-- Banner and navigation -->
+    <section class="banner">
+  <img src="https://i.postimg.cc/3RRp3CsF/banner.jpg" class="banner-image" alt="Shopping Ladies selfie">
+
+  <nav class="main-nav">
+    <ul class="nav-list">
+      <li class="nav-item"><a href="#">Home</a></li>
+      <li class="nav-item"><a href="#">Products</a></li>
+      <li class="nav-item"><a href="#">About Us</a></li>
+    </ul>
+  </nav>
+</section>
+
+  
+  
+  
+  
+  
+  
+   <!-- Featured Starts Here -->
+<div class="featured-items">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="section-heading">
+          <div class="line-dec"></div>
+          <h1>Featured Items</h1>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="owl-carousel owl-theme">
+
+          <!-- Item 1 Starts -->
+          <a href="single-product.html">
+            <div class="featured-item">
+              <img src="https://i.postimg.cc/Ss0C4V2M/big-01.jpg" alt="Item 1">
+              <h4>Blue Demin Jeans</h4>
+              <h6>N$15.00</h6>
+            </div>
+          </a>
+          <!-- Item 1 Ends -->
+
+          <!-- Item 2 Starts -->
+          <a href="single-product.html">
+            <div class="featured-item">
+              <img src="https://i.postimg.cc/76PDn7rq/Non-Stick-Induction-Pan-Set.webp" alt="Item 2">
+              <h4>Non-Stick Induction Pan</h4>
+              <h6>N$225.00</h6>
+            </div>
+          </a>
+          <!-- Item 2 Ends -->
+
+          <!-- Item 3 Starts -->
+          <a href="single-product.html">
+            <div class="featured-item">
+              <img src="https://i.postimg.cc/6pGQ8dtS/Knife-Set-1.jpg" alt="Item 9">
+              <h4>Knife Set</h4>
+              <h6>N$95.00</h6>
+            </div>
+          </a>
+          <!-- Item 3 Ends -->
+
+          <!-- Item 4 Starts -->
+          <a href="single-product.html">
+            <div class="featured-item">
+              <img src="https://i.postimg.cc/W1hkJx0Z/big-02.jpg" alt="Item 4">
+              <h4>Dark-Blue Jeans</h4>
+              <h6>$45.00</h6>
+            </div>
+          </a>
+          <!-- Item 4 Ends -->
+
+          <!-- Item 5 Starts 
+          <a href="single-product.html">
+            <div class="featured-item">
+              <img src="https://i.postimg.cc/TwG1Qs5C/big-06.jpg" alt="Item 5">
+              <h4>Red Tekkies</h4>
+              <h6>N$55.00</h6>
+            </div>
+          </a>
+          <!-- Item 5 Ends -->
+
+          <!-- Item 6 Starts
+          <a href="single-product.html">
+            <div class="featured-item">
+              <img src="https://i.postimg.cc/0NSKVmW2/big-03.jpg" alt="Item 6">
+              <h4>Blue Hoodie</h4>
+              <h6>N$65.00</h6>
+            </div>
+          </a>
+          <!-- Item 6 Ends -->
+
+          <!-- Item 7 Starts 
+          <a href="single-product.html">
+            <div class="featured-item">
+              <img src="https://i.postimg.cc/x86XXPCg/big-04.jpg" alt="Item 7">
+              <h4>White Handbag</h4>
+              <h6>N$75.00</h6>
+            </div>
+          </a>
+          <!-- Item 7 Ends -->
+
+          <!-- Item 8 Starts 
+          <a href="single-product.html">
+            <div class="featured-item">
+              <img src="https://i.postimg.cc/W1hkJx0Z/big-02.jpg" alt="Item 8">
+              <h4>https://i.postimg.cc/W1hkJx0Z/big-02.jpg</h4>
+              <h6>N$85.00</h6>
+            </div>
+          </a>
+          <!-- Item 8 Ends -->
+          
+
+          <!-- Item 9 Starts 
+        <a href="single-product.html">
+            <div class="featured-item">
+              <img src="https://i.postimg.cc/W1hkJx0Z/big-02.jpg" alt="Item 8">
+              <h4>https://i.postimg.cc/W1hkJx0Z/big-02.jpg</h4>
+              <h6>N$85.00</h6>
+            </div>
+          </a> 
+          <!-- Item 9 Ends -->
+          
+          
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Featured Ends Here -->
+
+
+  <!-- Footer Starts Here -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-contact">
+      <p><strong>Mobile:</strong> 081525555545</p>
+      <p><strong>Email:</strong> shop@gmail.com</p>
+    </div>
+
+    <div class="footer-cta">
+      <a href="https://wa.me/26481525555545" target="_blank" class="whatsapp-btn">
+        Chat on WhatsApp
+      </a>
+    </div>
+
+    <div class="footer-disclaimer">
+  <p>Disclaimer: All products, prices, and availability are subject to change without prior notice.</p>
+  <p>© 2025 YourShopName. All Rights Reserved.</p>
+</div>
+
+</footer>
+<!-- Footer Ends Here -->
+
+  
+  
+  
+  
+  
+  
+
+    <script src="script.js"></script>
+</body>
+</html>
+/* === Featured Items Section === */
+.featured-items {
+    margin-bottom: 70px;
+    padding: 30px 0;
+    background-color: #f9f9f9;
+}
+
+.featured-items .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.featured-items .section-heading {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.featured-items .section-heading h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #1e1e1e;
+}
+
+.featured-items .owl-carousel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.featured-items .owl-carousel .featured-item {
+    flex: 1 1 300px; /* responsive width */
+    border-radius: 5px;
+    border: 1px solid #eee;
+    padding: 20px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+.featured-items .owl-carousel .featured-item img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.featured-items .owl-carousel .featured-item img {
+    width: 100%;            /* Fill the card width */
+    height: auto;           /* Maintain aspect ratio */
+    max-height: 400px;      /* Optional: prevent super-tall images */
+    object-fit: contain;    /* Never overflow, always fully visible */
+    border-radius: 5px;
+}
+
+.featured-items .owl-carousel .featured-item h6 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #3a8bcd;
+    margin-top: 10px;
+}
+
+.featured-items .owl-carousel .featured-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* keeps text aligned at top */
+    width: 100%;
+    max-width: 300px;  /* optional: limits super-wide cards */
+    margin: 0 auto 30px auto;
+}
+
+
+.featured-items .owl-carousel .featured-item:hover h4 {
+    color: #3a8bcd;
+}
+
+.owl-theme .owl-dots {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.owl-theme .owl-dots .owl-dot {
+    outline: none;
+}
+
+.owl-theme .owl-dots .active span {
+    background-color: #3a8bcd !important;
+}
+
+.owl-theme .owl-dots .owl-dot span {
+    background-color: #aaa;
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    margin: 0 5px;
+    outline: none;
+}
+
+/* === Footer === */
+.footer {
+    background-color: #3a8bcd; /* #3a8bcd blue */
+    color: #fff; /* (#f5d32c Yellow tester) colour contacts/disclairmer */
+    text-align: center;
+  /*  padding: 40px 20px;    /* 40px 20px; */
+    width: 100%;           /* Full-width footer */
+    box-sizing: border-box; /* Ensure padding is inside */    
+    outline: 2px solid white; /* Keep outline inside */
+    outline-offset: -10px;
+    border-radius: 12px;
+  
+    padding-top: 20px;       /* smaller top padding */
+    margin-top: -70px;   /* -10 */
+}
+
+
+.footer .footer-menu ul {
+    padding: 0;
+    margin: 0 0 20px 0;
+    list-style: none;
+}
+
+.custom-footer .footer-menu ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+.footer .footer-menu ul li a {
+    color: #fff; /* Color for Nav */
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer .footer-menu ul li a:hover {
+    color: #dceeff;   
+}
+
+.footer .footer-contact p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.footer .footer-cta {
+    margin: 20px 0;
+}
+
+.whatsapp-btn {
+    display: inline-block;
+    background-color: #25d366;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.whatsapp-btn:hover {
+    background-color: #1ebe5d;
+}
+
+.footer .footer-disclaimer {
+    margin-top: 20px;
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+/* === Remove Gap Below Footer === */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main, .featured-items, .banner {
+    flex: 0 0 auto;
+}
+
+.footer {
+    flex-shrink: 0;
+}
