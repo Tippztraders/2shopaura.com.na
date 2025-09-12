@@ -12,8 +12,9 @@ document.querySelectorAll('.featured-item').forEach((item) => {
     // Destroy previous instance if open
     if (swiperModal) swiperModal.destroy(true, true);
 
-    // Initialize Swiper
+    // Initialize Swiper - vertical scroll
     swiperModal = new Swiper('.swiper-modal .swiper-container', {
+      direction: 'vertical', // 👈 swipe up/down
       loop: true,
       navigation: {
         nextEl: '.swiper-button-next',
@@ -23,7 +24,7 @@ document.querySelectorAll('.featured-item').forEach((item) => {
         el: '.swiper-pagination',
         clickable: true,
       },
-      spaceBetween: 10,
+      mousewheel: true, // desktop users can scroll with mouse
     });
   });
 });
