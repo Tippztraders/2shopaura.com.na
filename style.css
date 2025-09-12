@@ -354,7 +354,7 @@ main, .featured-items, .banner {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.95);
+  background: rgba(0,0,0,0.9);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -383,3 +383,7 @@ main, .featured-items, .banner {
   font-size: 14px;
 }
 /* end of Swiper Modal */
+
+
+
+
