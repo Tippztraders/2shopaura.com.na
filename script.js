@@ -41,11 +41,13 @@ modal.addEventListener('click', function (e) {
 });
 
 // Close with ESC key
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    closeModal();
-  }
-});
+document.addEventListener("DOMContentLoaded", function () {
+  // Main Swiper (if you have it already)
+  var mainSwiper = new Swiper(".mySwiper", {
+    pagination: {
+      el: ".swiper-pagination",
+    },
+  });
 
 // Close with swipe down
 modal.addEventListener('touchstart', (e) => {
@@ -64,3 +66,19 @@ function closeModal() {
   modal.style.display = 'none';
   if (swiperModal) swiperModal.destroy(true, true);
 }
+
+
+// Extra image swiper - vertical, 1 image per view
+  var extraSwiper = new Swiper(".extraSwiper", {
+    direction: "vertical",   // vertical swipe
+    slidesPerView: 1,        // show 1 full image
+    spaceBetween: 10,        // small gap
+    mousewheel: true,        // allow scroll
+    pagination: {
+      el: ".extra-pagination",
+      clickable: true,
+    },
+  });
+});
+
+                          
