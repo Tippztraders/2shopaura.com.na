@@ -1,21 +1,52 @@
-// === Initialize Swiper Modal ===
+// === Swiper Modal Logic ===
 let swiperModal;
 
-// Open modal when clicking a featured item
+// Close modal function
+function closeModal() {
+  const modal = document.querySelector('.swiper-modal');
+  modal.style.display = 'none';
+  if (swiperModal) swiperModal.destroy(true, true);
+}
+
+// Open modal and load images
 document.querySelectorAll('.featured-item').forEach((item) => {
   item.addEventListener('click', function (e) {
     e.preventDefault();
 
     const modal = document.querySelector('.swiper-modal');
+    const wrapper = modal.querySelector('.swiper-wrapper');
+
+    // Get all images for this item
+    const images = [
+      item.querySelector('img').src,
+      "https://i.postimg.cc/6q7Hzxsc/Coffee-Maker2.webp",
+      "https://i.postimg.cc/8cPFVTkd/Coffee-Maker3.webp",
+      "https://i.postimg.cc/Dy7Vn8T3/Coffee-Maker4.webp"
+    ]; // Add extra images per product here
+
+    // Clear previous slides
+    wrapper.innerHTML = '';
+
+    // Create slides
+    images.forEach(src => {
+      const slide = document.createElement('div');
+      slide.classList.add('swiper-slide');
+      slide.innerHTML = `<img src="${src}" style="width:100%; height:auto;" alt="Product image">`;
+      wrapper.appendChild(slide);
+    });
+
+    // Show modal
     modal.style.display = 'flex';
 
-    // Destroy previous instance if open
+    // Destroy previous swiper if exists
     if (swiperModal) swiperModal.destroy(true, true);
 
-    // Initialize Swiper - vertical scroll
+    // Initialize Swiper
     swiperModal = new Swiper('.swiper-modal .swiper-container', {
-      direction: 'vertical', // 👈 swipe up/down
+      direction: 'vertical',
+      slidesPerView: 1,
       loop: true,
+      spaceBetween: 10,
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
@@ -24,61 +55,28 @@ document.querySelectorAll('.featured-item').forEach((item) => {
         el: '.swiper-pagination',
         clickable: true,
       },
-      mousewheel: true, // desktop users can scroll with mouse
+      mousewheel: true, // desktop scroll
     });
   });
 });
 
-// === Close Modal ===
-const modal = document.querySelector('.swiper-modal');
-let touchStartY = 0;
-
-// Close on tap outside
-modal.addEventListener('click', function (e) {
-  if (e.target.classList.contains('swiper-modal')) {
-    closeModal();
-  }
+// Close modal on tap outside
+document.querySelector('.swiper-modal').addEventListener('click', function(e){
+  if(e.target.classList.contains('swiper-modal')) closeModal();
 });
 
-// Close with ESC key
-document.addEventListener("DOMContentLoaded", function () {
-  // Main Swiper (if you have it already)
-  var mainSwiper = new Swiper(".mySwiper", {
-    pagination: {
-      el: ".swiper-pagination",
-    },
-  });
+// Close modal on ESC
+document.addEventListener('keydown', (e) => {
+  if(e.key === "Escape") closeModal();
+});
 
-// Close with swipe down
+// Close modal with swipe down
+let touchStartY = 0;
+const modal = document.querySelector('.swiper-modal');
 modal.addEventListener('touchstart', (e) => {
   touchStartY = e.touches[0].clientY;
 });
-
 modal.addEventListener('touchend', (e) => {
   const touchEndY = e.changedTouches[0].clientY;
-  if (touchEndY - touchStartY > 100) {
-    closeModal();
-  }
+  if(touchEndY - touchStartY > 100) closeModal();
 });
-
-// Reusable function
-function closeModal() {
-  modal.style.display = 'none';
-  if (swiperModal) swiperModal.destroy(true, true);
-}
-
-
-// Extra image swiper - vertical, 1 image per view
-  var extraSwiper = new Swiper(".extraSwiper", {
-    direction: "vertical",   // vertical swipe
-    slidesPerView: 1,        // show 1 full image
-    spaceBetween: 10,        // small gap
-    mousewheel: true,        // allow scroll
-    pagination: {
-      el: ".extra-pagination",
-      clickable: true,
-    },
-  });
-});
-
-                          
