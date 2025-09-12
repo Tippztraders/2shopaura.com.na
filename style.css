@@ -362,10 +362,8 @@ main, .featured-items, .banner {
 }
 
 .swiper-modal .swiper-container {
-  width: 90%;
-  max-width: 600px;
-  height: 80%;
-  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .swiper-modal .swiper-slide img {
@@ -373,6 +371,7 @@ main, .featured-items, .banner {
   height: 100%;
   object-fit: contain;
 }
+
 
 .swiper-close {
   position: absolute;
