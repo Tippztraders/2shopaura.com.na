@@ -31,7 +31,7 @@ document.querySelectorAll('.featured-item').forEach((item) => {
     images.forEach(src => {
       const slide = document.createElement('div');
       slide.classList.add('swiper-slide');
-      slide.innerHTML = `<img src="${src}" style="width:100%; height:auto;" alt="Product image">`;
+      slide.innerHTML = `<img src="${src}" alt="Product image">`;
       wrapper.appendChild(slide);
     });
 
@@ -56,6 +56,7 @@ document.querySelectorAll('.featured-item').forEach((item) => {
         clickable: true,
       },
       mousewheel: true, // desktop scroll
+      keyboard: true,   // arrow keys desktop
     });
   });
 });
@@ -70,13 +71,21 @@ document.addEventListener('keydown', (e) => {
   if(e.key === "Escape") closeModal();
 });
 
-// Close modal with swipe down
+// Close modal on swipe down (mobile)
 let touchStartY = 0;
 const modal = document.querySelector('.swiper-modal');
+
 modal.addEventListener('touchstart', (e) => {
   touchStartY = e.touches[0].clientY;
 });
+
 modal.addEventListener('touchend', (e) => {
   const touchEndY = e.changedTouches[0].clientY;
-  if(touchEndY - touchStartY > 100) closeModal();
+  // Only close if swiping down significantly
+  if(swiperModal && swiperModal.activeIndex === 0 && touchEndY - touchStartY > 100) {
+    closeModal();
+  }
 });
+
+// Close modal via "Swipe down or tap outside to close" text
+document.querySelector('.swiper-close').addEventListener('click', closeModal);
