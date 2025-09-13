@@ -46,11 +46,15 @@ function openSwiperModal(startIndex = 0) {
     el: '.swiper-modal .swiper-pagination',
     clickable: true,
   },
-  navigation: {
+ 
+    
+    navigation: {
     nextEl: '.swiper-modal .swiper-button-next',
     prevEl: '.swiper-modal .swiper-button-prev',
   },
-  mousewheel: true,
+
+    
+    mousewheel: true,
   keyboard: true,
   centeredSlides: false,
   // Fix: Set autoHeight to false for vertical scrolling
@@ -60,6 +64,16 @@ function openSwiperModal(startIndex = 0) {
 
 
 
+// Open modal when clicking a thumbnail
+document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
+  thumb.addEventListener('click', function () {
+    openSwiperModal(index);
+  });
+});
+
+
+
+  
 
 
 
