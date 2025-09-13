@@ -253,6 +253,12 @@ body {
   text-align: justify;
 }
 
+.featured-items .featured-item img {
+  width: 100%;        /* fills card */
+  height: 250px;      /* fixed height */
+  object-fit: cover;  /* crops nicely but keeps proportion */
+  border-radius: 5px;
+}
 
 
 
@@ -372,11 +378,13 @@ main, .featured-items, .banner {
 
 .swiper-modal .swiper-slide img {
   width: auto;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  border-bottom: 2px solid #007BFF; /* thin blue line between pics */
+  height: auto;
+  max-width: 90%;    /* fits inside screen */
+  max-height: 90vh;  /* almost full viewport height */
+  object-fit: contain; /* no cropping, keeps original proportion */
+  margin: 0 auto;     /* centers horizontally */
 }
+
 
 .swiper-close {
   position: absolute;
