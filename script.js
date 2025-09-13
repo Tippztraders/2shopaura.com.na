@@ -5,102 +5,72 @@ function openSwiperModal(startIndex = 0) {
   const modal = document.querySelector('.swiper-modal');
   modal.style.display = 'flex';
 
-  if (swiperModal) {
-    swiperModal.slideToLoop(startIndex, 0); // jump to tapped image
-  } else {
-    swiperModal = new Swiper('.swiper-modal .swiper', {
-      loop: true,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-    });
+  const wrapper = modal.querySelector('.swiper-wrapper');
 
-    swiperModal.slideToLoop(startIndex, 0);
-  }
+  // Example: load images dynamically (adapt as needed)
+  const images = [
+    "https://i.postimg.cc/6q7Hzxsc/Coffee-Maker2.webp",
+    "https://i.postimg.cc/8cPFVTkd/Coffee-Maker3.webp",
+    "https://i.postimg.cc/Dy7Vn8T3/Coffee-Maker4.webp"
+  ];
+
+  wrapper.innerHTML = '';
+  images.forEach(src => {
+    const slide = document.createElement('div');
+    slide.classList.add('swiper-slide');
+    slide.innerHTML = `<img src="${src}" alt="Product image">`;
+    wrapper.appendChild(slide);
+  });
+
+  // Destroy previous swiper if exists
+  if (swiperModal) swiperModal.destroy(true, true);
+
+  // Initialize Swiper
+  swiperModal = new Swiper('.swiper-modal .swiper', {
+    direction: 'vertical',   // change to 'horizontal' if you prefer
+    slidesPerView: 1,
+    loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    mousewheel: true,
+    keyboard: true,
+  });
+
+  swiperModal.slideToLoop(startIndex, 0);
 }
 
 function closeSwiperModal() {
   document.querySelector('.swiper-modal').style.display = 'none';
 }
 
-
-// Open modal and load images
-document.querySelectorAll('.featured-item').forEach((item) => {
-  item.addEventListener('click', function (e) {
-    e.preventDefault();
-
-    const modal = document.querySelector('.swiper-modal');
-    const wrapper = modal.querySelector('.swiper-wrapper');
-
-    // Get all images for this item
-    const images = [
-      item.querySelector('img').src,
-      "https://i.postimg.cc/6q7Hzxsc/Coffee-Maker2.webp",
-      "https://i.postimg.cc/8cPFVTkd/Coffee-Maker3.webp",
-      "https://i.postimg.cc/Dy7Vn8T3/Coffee-Maker4.webp"
-    ]; // Add extra images per product here
-
-    // Clear previous slides
-    wrapper.innerHTML = '';
-
-    // Create slides
-    images.forEach(src => {
-      const slide = document.createElement('div');
-      slide.classList.add('swiper-slide');
-      slide.innerHTML = `<img src="${src}" alt="Product image">`;
-      wrapper.appendChild(slide);
-    });
-
-    // Show modal
-    modal.style.display = 'flex';
-
-    // Destroy previous swiper if exists
-    if (swiperModal) swiperModal.destroy(true, true);
-
-    // Initialize Swiper
-   swiperModal = new Swiper('.swiper-modal .swiper-container', {
-  direction: 'vertical',   // top-to-bottom swiping
-  slidesPerView: 1,
-  loop: true,
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true,
-  },
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-  mousewheel: true,  // desktop scroll wheel
-  keyboard: true,    // arrow keys navigation
-});
-
-
 // Close modal on tap outside
 document.querySelector('.swiper-modal').addEventListener('click', function(e){
-  if(e.target.classList.contains('swiper-modal')) closeModal();
+  if (e.target.classList.contains('swiper-modal')) closeSwiperModal();
 });
 
 // Close modal on ESC
 document.addEventListener('keydown', (e) => {
-  if(e.key === "Escape") closeModal();
+  if (e.key === "Escape") closeSwiperModal();
 });
 
-// Close modal on swipe down (mobile)
+// Swipe down to close (mobile)
 let touchStartY = 0;
 const modal = document.querySelector('.swiper-modal');
-
 modal.addEventListener('touchstart', (e) => {
   touchStartY = e.touches[0].clientY;
 });
-
 modal.addEventListener('touchend', (e) => {
   const touchEndY = e.changedTouches[0].clientY;
-  // Only close if swiping down significantly
-  if(swiperModal && swiperModal.activeIndex === 0 && touchEndY - touchStartY > 100) {
-    closeModal();
+  if (swiperModal && swiperModal.activeIndex === 0 && touchEndY - touchStartY > 100) {
+    closeSwiperModal();
   }
 });
 
-// Close modal via "Swipe down or tap outside to close" text
-document.querySelector('.swiper-close').addEventListener('click', closeModal);
+// Close button
+document.querySelector('.swiper-close').addEventListener('click', closeSwiperModal);
