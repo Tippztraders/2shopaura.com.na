@@ -1,4 +1,3 @@
-// === Swiper Modal Logic ===
 let swiperModal;
 
 function openSwiperModal(startIndex = 0) {
@@ -8,25 +7,32 @@ function openSwiperModal(startIndex = 0) {
   // Destroy previous swiper if exists
   if (swiperModal) swiperModal.destroy(true, true);
 
-  // Initialize Swiper (use swiper-container from HTML)
   swiperModal = new Swiper('.swiper-modal .swiper-container', {
-    direction: 'horizontal',   // or 'vertical' if you want
+    direction: 'vertical',       // vertical swipe
     slidesPerView: 1,
-    loop: true,
+    loop: false,                 // no infinite loop for vertical
     pagination: {
-      el: '.swiper-pagination',
+      el: '.swiper-modal .swiper-pagination',  // scoped to modal
       clickable: true,
     },
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: '.swiper-modal .swiper-button-next',
+      prevEl: '.swiper-modal .swiper-button-prev',
     },
     mousewheel: true,
     keyboard: true,
+    centeredSlides: false,        // align top
+    spaceBetween: 20,
   });
 
-  swiperModal.slideToLoop(startIndex, 0);
+  swiperModal.slideTo(startIndex, 0);
 }
+
+
+
+
+
+
 
 function closeSwiperModal() {
   document.querySelector('.swiper-modal').style.display = 'none';
