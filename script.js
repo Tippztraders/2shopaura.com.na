@@ -5,29 +5,12 @@ function openSwiperModal(startIndex = 0) {
   const modal = document.querySelector('.swiper-modal');
   modal.style.display = 'flex';
 
-  const wrapper = modal.querySelector('.swiper-wrapper');
-
-  // Example: load images dynamically (adapt as needed)
-  const images = [
-    "https://i.postimg.cc/6q7Hzxsc/Coffee-Maker2.webp",
-    "https://i.postimg.cc/8cPFVTkd/Coffee-Maker3.webp",
-    "https://i.postimg.cc/Dy7Vn8T3/Coffee-Maker4.webp"
-  ];
-
-  wrapper.innerHTML = '';
-  images.forEach(src => {
-    const slide = document.createElement('div');
-    slide.classList.add('swiper-slide');
-    slide.innerHTML = `<img src="${src}" alt="Product image">`;
-    wrapper.appendChild(slide);
-  });
-
   // Destroy previous swiper if exists
   if (swiperModal) swiperModal.destroy(true, true);
 
-  // Initialize Swiper
-  swiperModal = new Swiper('.swiper-modal .swiper', {
-    direction: 'vertical',   // change to 'horizontal' if you prefer
+  // Initialize Swiper (use swiper-container from HTML)
+  swiperModal = new Swiper('.swiper-modal .swiper-container', {
+    direction: 'horizontal',   // or 'vertical' if you want
     slidesPerView: 1,
     loop: true,
     pagination: {
