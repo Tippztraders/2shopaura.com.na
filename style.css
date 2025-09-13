@@ -409,10 +409,13 @@ main, .featured-items, .banner {
   justify-content: center;
   align-items: center;
   height: 90vh; /* leave small top & bottom margin */
+  overflow: hidden;  
 }
 
 .swiper-modal .swiper-wrapper {
   height: 100%;
+  flex-direction: column;  /* stack slides vertically */
+  align-items: center;     /* center horizontally */
 }
 
 .swiper-modal .swiper-slide img {
@@ -437,6 +440,11 @@ main, .featured-items, .banner {
   cursor: pointer;
 }
 
-
+.swiper-modal .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;  /* align top */
+  margin-bottom: 20px;      /* space between slides */
+}
 
 
