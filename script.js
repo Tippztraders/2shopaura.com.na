@@ -64,16 +64,7 @@ function openSwiperModal(startIndex = 0) {
 
 
 
-// Open modal when clicking a thumbnail
-document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
-  thumb.addEventListener('click', function () {
-    openSwiperModal(index);
-  });
-});
-
-
-
-  
+ 
 
 
 
