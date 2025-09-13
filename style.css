@@ -412,12 +412,10 @@ main, .featured-items, .banner {
   justify-content: center;
   align-items: center;
   height: 90vh; /* leave small top & bottom margin */
-  overflow: hidden;  
 }
 
 .swiper-modal .swiper-wrapper {
   height: 100%;
-  flex-direction: column;  /* stack slides vertically */
   align-items: center;     /* center horizontally */
 }
 
@@ -446,8 +444,7 @@ main, .featured-items, .banner {
 .swiper-modal .swiper-slide {
   display: flex;
   justify-content: center;
-  align-items: flex-start;  /* align top */
-  margin-bottom: 20px;      /* space between slides */
+  align-items: center;  /* align top */
 }
 
 
