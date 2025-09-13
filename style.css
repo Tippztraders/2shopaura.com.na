@@ -223,6 +223,12 @@ body {
     color: #3a8bcd;
 }
 
+
+
+
+
+
+
 .owl-theme .owl-dots {
     text-align: center;
     margin-top: 30px;
@@ -244,6 +250,29 @@ body {
     margin: 0 5px;
     outline: none;
 }
+
+.owl-carousel {
+    display: block;  /* remove flex wrapping */
+}
+
+.owl-carousel .owl-stage {
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.owl-carousel .owl-item {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+
+
 
 .item-description {
   margin-top: 10px;
@@ -393,6 +422,7 @@ main, .featured-items, .banner {
   max-height: 90vh;  /* almost full viewport height */
   object-fit: contain; /* no cropping, keeps original proportion */
   margin: 0 auto;     /* centers horizontally */
+  border-bottom: 2px solid #007BFF;
 }
 
 
