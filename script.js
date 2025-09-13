@@ -1,12 +1,29 @@
 // === Swiper Modal Logic ===
 let swiperModal;
 
-// Close modal function
-function closeModal() {
+function openSwiperModal(startIndex = 0) {
   const modal = document.querySelector('.swiper-modal');
-  modal.style.display = 'none';
-  if (swiperModal) swiperModal.destroy(true, true);
+  modal.style.display = 'flex';
+
+  if (swiperModal) {
+    swiperModal.slideToLoop(startIndex, 0); // jump to tapped image
+  } else {
+    swiperModal = new Swiper('.swiper-modal .swiper', {
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+
+    swiperModal.slideToLoop(startIndex, 0);
+  }
 }
+
+function closeSwiperModal() {
+  document.querySelector('.swiper-modal').style.display = 'none';
+}
+
 
 // Open modal and load images
 document.querySelectorAll('.featured-item').forEach((item) => {
@@ -42,24 +59,22 @@ document.querySelectorAll('.featured-item').forEach((item) => {
     if (swiperModal) swiperModal.destroy(true, true);
 
     // Initialize Swiper
-    swiperModal = new Swiper('.swiper-modal .swiper-container', {
-      direction: 'vertical',
-      slidesPerView: 1,
-      loop: true,
-      spaceBetween: 10,
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      mousewheel: true, // desktop scroll
-      keyboard: true,   // arrow keys desktop
-    });
-  });
+   swiperModal = new Swiper('.swiper-modal .swiper-container', {
+  direction: 'vertical',   // top-to-bottom swiping
+  slidesPerView: 1,
+  loop: true,
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  mousewheel: true,  // desktop scroll wheel
+  keyboard: true,    // arrow keys navigation
 });
+
 
 // Close modal on tap outside
 document.querySelector('.swiper-modal').addEventListener('click', function(e){
