@@ -389,6 +389,9 @@ main, .featured-items, .banner {
 
 
 
+
+
+
 /* Swiper Modal */
 .swiper-modal {
   position: fixed;
@@ -447,4 +450,11 @@ main, .featured-items, .banner {
   margin-bottom: 20px;      /* space between slides */
 }
 
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: auto;  /* or let Swiper control height */
+}
 
