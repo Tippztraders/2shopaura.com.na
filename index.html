@@ -10,45 +10,58 @@
   
   <!-- Custom CSS -->
   <link rel="stylesheet" href="style.css">
+  
+  <!-- Icon Library for up/down arrows -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
   <h2 class="section-heading">Featured Items</h2>
 
   <!-- Featured Item Card Wrapper -->
-<div class="product-box">
-  <div class="featured-item" onclick="openSwiperModal(0)">
-   <img class="main-image" src="1CoffeeMaker1main.jpg" alt="Coffee Maker">
-    <h4 class="item-name">Coffee Maker</h4>
-    <h6 class="item-price">N$1,250.00</h6>
-    <p class="item-description">KIDISLE Hot & Iced Coffee Maker, Single Serve Coffee Maker for K-Cup and Grounds.</p>
-    <p class="tap-text">Tap to view more images</p>
+  <div class="product-box">
+    <div class="featured-item" onclick="openSwiperModal(0)">
+      <img class="main-image" src="https://i.postimg.cc/sfQc1nXn/1-Coffee-Maker1main.jpg" alt="Coffee Maker">
+      <h4 class="item-name">Coffee Maker</h4>
+      <h6 class="item-price">N$1,250.00</h6>
+      <p class="item-description">KIDISLE Hot & Iced Coffee Maker, Single Serve Coffee Maker for K-Cup and Grounds.</p>
+      <p class="tap-text">Tap to view more images</p>
+    </div>
   </div>
-</div>
 
   <!-- Swiper Modal -->
   <div class="swiper-modal" style="display:none;">
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="1CoffeeMaker1main.jpg" alt="Slide 1"></div>
-        <div class="swiper-slide"><img src="CoffeeMaker2.jpg" alt="Slide 2"></div>
-        <div class="swiper-slide"><img src="CoffeeMaker3.jpg" alt="Slide 3"></div>
-        <div class="swiper-slide"><img src="CoffeeMaker4.jpg" alt="Slide 4"></div>
+    <div class="swiper-modal-content">
+      <!-- Main Swiper -->
+      <div class="swiper-container main-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="https://i.postimg.cc/sfQc1nXn/1-Coffee-Maker1main.jpg" alt="Slide 1"></div>
+          <div class="swiper-slide"><img src="https://i.postimg.cc/66khZd4B/Coffee-Maker2.jpg" alt="Slide 2"></div>
+          <div class="swiper-slide"><img src="https://i.postimg.cc/1z7G36Zh/Coffee-Maker3.jpg" alt="Slide 3"></div>
+          <div class="swiper-slide"><img src="https://i.postimg.cc/sx77mNGs/Coffee-Maker4.jpg" alt="Slide 4"></div>
+        </div>
+        <div class="swiper-pagination main-pagination"></div>
       </div>
-
-      <div class="swiper-pagination"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-scrollbar"></div>
-      <div class="swiper-close">Swipe down or tap outside to close</div>
+      
+      <!-- Thumbnail Swiper with vertical navigation -->
+      <div class="swiper-thumbnails-wrapper">
+        <div class="swiper-button-thumb-prev"><i class="fas fa-chevron-up"></i></div>
+        <div class="swiper-container thumbnail-swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="https://i.postimg.cc/sfQc1nXn/1-Coffee-Maker1main.jpg" alt="Thumbnail 1"></div>
+            <div class="swiper-slide"><img src="https://i.postimg.cc/66khZd4B/Coffee-Maker2.jpg" alt="Thumbnail 2"></div>
+            <div class="swiper-slide"><img src="https://i.postimg.cc/1z7G36Zh/Coffee-Maker3.jpg" alt="Thumbnail 3"></div>
+            <div class="swiper-slide"><img src="https://i.postimg.cc/sx77mNGs/Coffee-Maker4.jpg" alt="Thumbnail 4"></div>
+          </div>
+        </div>
+        <div class="swiper-button-thumb-next"><i class="fas fa-chevron-down"></i></div>
+      </div>
     </div>
+    <div class="swiper-close-area" onclick="closeSwiperModal()"></div>
   </div>
 
   <!-- Swiper JS -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="script.js"></script>
-  
-  <br>
-  
 </body>
 </html>
