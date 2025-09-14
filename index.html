@@ -1,180 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop-Aura</title>
-    <link rel="stylesheet" href="style.css">
-  
-  <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Featured Item Demo</title>
 
-<!-- Owl Carousel CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
   
-  
-  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Pre-header section -->
-    <div class="pre-header">
-        <p>"Quality You Need. Variety You’ll Love"</p>
-    </div>
+  <h2 class="section-heading">Featured Items</h2>
 
-    <!-- Header with slideshow behind logo/nav -->
-    <header class="header">
-        <div class="slideshow">
-            <img src="slide1.jpg" class="slide active" alt="Slide 1">
-            <img src="slide2.jpg" class="slide" alt="Slide 2">
-            <img src="slide3.jpg" class="slide" alt="Slide 3">
-        </div>
-
-        <div class="header-container">
-            <a href="#" class="logo-link">
-                <img src="Logo.png" class="logo" alt="Company Logo">
-            </a>
-        </div>
-    </header>
-
-    <!-- Banner and navigation -->
-    <section class="banner">
-  <img src="banner.jpg" class="banner-image" alt="Shopping Ladies selfie">
-
-  <nav class="main-nav">
-    <ul class="nav-list">
-      <li class="nav-item"><a href="#">Home</a></li>
-      <li class="nav-item"><a href="#">Products</a></li>
-      <li class="nav-item"><a href="#">About Us</a></li>
-    </ul>
-  </nav>
-</section>
-
-  
-  
-  
-  
-  
-  
-   <!-- Featured Starts Here -->
-<div class="featured-items">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="section-heading">
-          <div class="line-dec"></div>
-          <h1>Featured Items</h1>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <div class="owl-carousel owl-theme">
-
-          <!-- Item 1 Starts -->
-          <div class="featured-item" onclick="openSwiperModal(0)">
-            <img src="1CoffeeMaker1main.jpg" alt="Item 1">
-            <h4>Coffee Maker</h4>
-            <h6>N$1,250.00</h6>
-            <p class="item-description">KIDISLE Hot & Iced Coffee Maker, Single Serve Coffee Maker for K-Cup and Grounds. Tap for more images.</p>
-          </div>
-          <!-- Item 1 Ends -->
-
-        </div>
-      </div>
-    </div>
+  <!-- Featured Item Card Wrapper -->
+<div class="product-box">
+  <div class="featured-item" onclick="openSwiperModal(0)">
+    <img class="1CoffeeMaker1main.jpg" alt="Coffee Maker">
+    <h4 class="item-name">Coffee Maker</h4>
+    <h6 class="item-price">N$1,250.00</h6>
+    <p class="item-description">KIDISLE Hot & Iced Coffee Maker, Single Serve Coffee Maker for K-Cup and Grounds.</p>
+    <p class="tap-text">Tap image to view more images</p>
   </div>
 </div>
-<!-- Featured Ends Here -->
 
-
-
-  <!-- Footer Starts Here -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-menu">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li><a href="about.html">About Us</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-contact">
-      <p><strong>Mobile:</strong> 081525555545</p>
-      <p><strong>Email:</strong> shop@gmail.com</p>
-    </div>
-
-    <div class="footer-cta">
-      <a href="https://wa.me/26481525555545" target="_blank" class="whatsapp-btn">
-        Chat on WhatsApp
-      </a>
-    </div>
-
-    <div class="footer-disclaimer">
-  <p>Disclaimer: All products, prices, and availability are subject to change without prior notice.</p>
-  <p>© 2025 YourShopName. All Rights Reserved.</p>
-</div>
-
-</footer>
-<!-- Footer Ends Here -->
-
-  
-  
-  
-
-<!-- Swiper Modal for Product 1 -->
-<div class="swiper-modal" style="display:none;">
-  <div class="swiper-container">
-    <div class="swiper-wrapper">
-      <!-- Product 1 Extra Images -->
-      <div class="swiper-slide">         
-        <img src="CoffeeMaker2.jpg" alt="Coffee Maker 2">
+  <!-- Swiper Modal -->
+  <div class="swiper-modal" style="display:none;">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="1CoffeeMaker1main.jpg" alt="Slide 1"></div>
+        <div class="swiper-slide"><img src="CoffeeMaker2.jpg" alt="Slide 2"></div>
+        <div class="swiper-slide"><img src="CoffeeMaker3.jpg" alt="Slide 3"></div>
+        <div class="swiper-slide"><img src="CoffeeMaker4.jpg" alt="Slide 4"></div>
       </div>
-      <div class="swiper-slide">
-        <img src="CoffeeMaker3.jpg" alt="Coffee Maker 3">
-      </div>
-      <div class="swiper-slide">         
-        <img src="CoffeeMaker4.jpg" alt="Coffee Maker 4">
-      </div>
-      <div class="swiper-slide">
-        <img src="CoffeeMaker5.jpg" alt="Coffee Maker 5">
-      </div>
-      <!-- Add more slides if needed -->
-    </div>
 
-    <!-- Swiper Controls -->
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-close">Swipe down or tap outside to close</div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-scrollbar"></div>
+      <div class="swiper-close">Swipe down or tap outside to close</div>
+    </div>
   </div>
-</div>
-<!-- End of Product 1 Modal -->
 
-             
-      
-      
-      
-    </div>
-    <!-- Pagination -->
-    <div class="swiper-pagination"></div>
-    <!-- Navigation Arrows -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-    <!-- Close Text -->
-    <div class="swiper-close">Swipe down or tap outside to close</div>
-  </div>
-</div>
-  <!-- end of Swiper Modal -->
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="script.js"></script>
   
+  <br>
   
-  
-  
-  
-  
-  
-
-    <script src="script.js"></script>
 </body>
 </html>
