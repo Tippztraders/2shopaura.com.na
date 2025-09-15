@@ -65,7 +65,7 @@ main, .featured-items, .banner {
 .footer .footer-disclaimer { margin-top:20px; font-size:12px; opacity:0.9; }
 
 /* === Featured Product Box (from BOX ONLY VERSION) === */
-.featured-items { padding:30px 0; background:#f9f9f9; }
+.featured-items { padding:30px 0; background:#f9f9f9; margin-bottom: 50px; /* space before footer */ }
 .section-heading { text-align:center; margin-bottom:20px; }
 .product-box { display:flex; justify-content:center; }
 .featured-item { width:300px; border:1px solid #ddd; border-radius:8px; overflow:hidden; box-shadow:0 2px 4px rgba(0,0,0,0.1); cursor:pointer; transition:transform 0.2s ease-in-out; background:#fff; margin:0 auto; }
