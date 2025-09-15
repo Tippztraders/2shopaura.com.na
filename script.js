@@ -1,58 +1,33 @@
 let mainSwiper;
-let thumbnailSwiper;
 
-function openSwiperModal(index) {
-  // Initialize the thumbnail Swiper first, with vertical direction
-  thumbnailSwiper = new Swiper('.thumbnail-swiper', {
-    direction: 'vertical',
-    slidesPerView: 4,
-    spaceBetween: 10,
-    freeMode: true,
-    watchSlidesProgress: true,
-    navigation: {
-      nextEl: '.swiper-button-thumb-next',
-      prevEl: '.swiper-button-thumb-prev',
-    },
-    // Make thumbnails swipeable on mobile
-    breakpoints: {
-      768: {
-        direction: 'vertical',
-      },
-      320: {
-        direction: 'horizontal',
-        slidesPerView: 4,
-      }
-    }
-  });
+function openSwiperModal(startIndex = 0) {
+  const modal = document.querySelector('.swiper-modal');
+  modal.style.display = 'flex';
 
-  // Initialize the main Swiper, linking it to the thumbnails
+  // Init vertical swiper with mousewheel support
   mainSwiper = new Swiper('.main-swiper', {
+    direction: 'vertical',
     spaceBetween: 10,
     pagination: {
-      el: '.swiper-pagination.main-pagination',
+      el: '.main-pagination',
       clickable: true,
     },
-    thumbs: {
-      swiper: thumbnailSwiper,
-    },
+    mousewheel: true,
+    initialSlide: startIndex,
   });
-
-  // Slide to the correct initial image
-  mainSwiper.slideTo(index, 0);
-
-  // Show the modal
-  document.querySelector('.swiper-modal').style.display = 'flex';
 }
 
 function closeSwiperModal() {
-  // Hide the modal
-  document.querySelector('.swiper-modal').style.display = 'none';
-  
-  // Destroy swiper instances to free up resources and prevent conflicts
+  const modal = document.querySelector('.swiper-modal');
+  modal.style.display = 'none';
+
   if (mainSwiper) {
-    mainSwiper.destroy(true, true);
-  }
-  if (thumbnailSwiper) {
-    thumbnailSwiper.destroy(true, true);
+    mainSwiper.destroy();
+    mainSwiper = null;
   }
 }
+
+// Extra: make sure both tap and mouse click open modal
+document.querySelectorAll('.featured-item').forEach((item, index) => {
+  item.addEventListener('click', () => openSwiperModal(index));
+});
