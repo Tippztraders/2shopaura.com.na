@@ -39,7 +39,7 @@ main, .featured-items, .banner {
 .header {
     position: relative;
     width: 100%;
-    height: 40vh;
+    height: 343px;   /* 40vh */
     min-height: 150px;
     overflow: hidden;
 }
