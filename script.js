@@ -1,38 +1,59 @@
-let mainSwiper;
+let activeModal = null; 
+let swipers = {};
 
-function openSwiperModal(startIndex = 0) {
-  const modal = document.querySelector('.swiper-modal');
-  modal.style.display = 'flex';
+// Open Modal
+function openSwiperModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (!modal) return;
 
-  // Init vertical swiper with mousewheel support
-  mainSwiper = new Swiper('.main-swiper', {
-    direction: 'vertical',
-    spaceBetween: 10,
-    pagination: {
-      el: '.main-pagination',
-      clickable: true,
-    },
-    mousewheel: true,
-    initialSlide: startIndex,
-  });
-}
+  modal.style.display = "flex";
+  activeModal = modal;
 
-function closeSwiperModal() {
-  const modal = document.querySelector('.swiper-modal');
-  modal.style.display = 'none';
+  // Initialize Swiper once
+  if (!swipers[modalId]) {
+    const swiperEl = modal.querySelector(".swiper-container");
+    swipers[modalId] = new Swiper(swiperEl, {
+      loop: true,
+      pagination: {
+        el: modal.querySelector(".swiper-pagination"),
+        clickable: true,
+      },
+      mousewheel: true,
+      keyboard: { enabled: true },
+      grabCursor: true,
+    });
 
-  if (mainSwiper) {
-    mainSwiper.destroy();
-    mainSwiper = null;
+    // 🟢 FIX: refresh Swiper after modal becomes visible
+    setTimeout(() => {
+      swipers[modalId].update();
+    }, 100);
+  } else {
+    // 🟢 Also refresh if modal already has a Swiper instance
+    setTimeout(() => {
+      swipers[modalId].update();
+    }, 100);
   }
 }
 
-// Extra: make sure both tap and mouse click open modal
-document.querySelectorAll('.featured-item').forEach((item, index) => {
-  item.addEventListener('click', () => openSwiperModal(index));
+// Close Modal
+function closeSwiperModal() {
+  if (activeModal) {
+    activeModal.style.display = "none";
+    activeModal = null;
+  }
+}
+
+// Click outside modal content closes it
+document.querySelectorAll('.swiper-modal').forEach(modal => {
+  modal.addEventListener('click', e => {
+    if (e.target === modal) closeSwiperModal();
+  });
 });
 
-
+// Escape key closes modal
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeSwiperModal();
+});
 
 // Banner slideshow auto-change
 const slides = document.querySelectorAll('.slideshow .slide');
@@ -43,6 +64,3 @@ setInterval(() => {
   currentSlide = (currentSlide + 1) % slides.length;
   slides[currentSlide].classList.add('active');
 }, 3000); // 3000ms = 3 seconds
-
-
-

@@ -31,44 +31,7 @@ main, .featured-items, .banner {
     background-color: #3a8bcd;
     color: #fff;
     text-align: center;
-    padding: 8px 0;
-    font-size: 14px;
-}
-
-/* === DESIGN ONLY VERSION styles remain untouched === */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html, body {
-    height: 100%;
-}
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #f5f5f5;
-    line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-main, .featured-items, .banner {
-    flex: 0 0 auto;
-}
-
-.footer {
-    flex-shrink: 0;
-}
-
-/* Pre-header */
-.pre-header {
-    background-color: #3a8bcd;
-    color: #fff;
-    text-align: center;
-    padding: 8px 0;
+    padding: 5px 0;
     font-size: 14px;
 }
 
@@ -104,19 +67,27 @@ main, .featured-items, .banner {
 }
 
 .header-container {
-    position: relative;
-    z-index: 2;
+    position: absolute;        /* sit on top of slideshow */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;              /* cover the header area */
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    align-items: flex-start;   /* keep logo at the top */
+    justify-content: flex-start;
+    padding: 0px 0px;        /* control distance from edges */
+    z-index: 2;
 }
 
+
+
 .logo {
-    height: 40px;
+    height: 150px;              /* keep logo clearly visible */
+    width: auto;
+    object-fit: contain;
 }
+
+
 
 /* === Banner === */
 .banner {
@@ -161,7 +132,7 @@ main, .featured-items, .banner {
     text-decoration: none;
     font-weight: 600;
     font-size: 16px;
-    padding: 0.5em 1em;
+    padding: 0.2em 0.5em;    /* 0.5em 1em */
     border-radius: 6px;
     transition: background 0.3s ease, color 0.3s ease;
 }
@@ -171,142 +142,284 @@ main, .featured-items, .banner {
     color: #d1d1d1;
 }
 
-/* === Featured Product Box (BOX ONLY VERSION) === */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* === Featured Section === */
 .featured-items {
-    padding: 30px 0;
-    background-color: #f9f9f9;
-    margin-bottom: 50px; /* space before footer */
+  padding: 30px 15px;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 100px; /* space above footer */
 }
 
-.section-heading {
-    text-align: center;
+.featured-items h1 {
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  color: #3a8bcd;
+  text-decoration: underline;
 }
 
+/* === Product Grid === */
+.featured-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* === Product Card === */
 .product-box {
-    display: flex;
-    justify-content: center;
+  flex: 1 1 calc(25% - 20px); /* 4 per row on desktop */
+  max-width: 220px;
+  text-align: center;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+  background: #fff;
+  transition: transform 0.2s;
 }
 
-.featured-item {
-    width: 300px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out;
-    background-color: #fff;
-    margin: 0 auto;
+.product-box:hover {
+  transform: translateY(-5px);
 }
 
-.featured-item:hover {
-    transform: translateY(-5px);
+.featured-item img {
+  width: 100%;
+   height: auto;  /* 150px */
+  object-fit: cover;
+  border-radius: 4px;
 }
 
-.featured-item .main-image {
-    width: 100%;
-    height: auto;
-    display: block;
+
+
+/* Color of =Product Title */
+.featured-item h4 {
+  color: #3a8bcd; /* themed blue */
+  font-weight: 600;
 }
 
-.featured-item h4,
-.featured-item h6,
-.featured-item p {
-    padding: 0 15px;
-    margin: 10px 0;
+
+
+/* Color for =Get your price= */
+
+.featured-item p:first-of-type {
+  color: orange;
+  text-shadow: 1px 1px 2px black;
+  font-weight: 800;
 }
 
-.tap-text {
-    font-size: 12px;
-    color: #777;
-    text-align: center;
-    padding-bottom: 10px;
+
+
+
+
+.contact-btn {
+  display: inline-block;
+  padding: 10px 24px;
+  background-color: #3a8bcd; /* base blue */
+  color: #fff;               /* white text */
+  font-weight: 600;
+  border-radius: 50px;       /* pill shape */
+  text-decoration: none;
+  transition: background-color 0.2s, box-shadow 0.2s, transform 0.1s;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
 }
+
+.contact-btn:hover {
+  background-color: #2a6b9c; /* dark blue on hover */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.contact-btn:active {
+  transform: scale(0.97);    /* subtle tap feedback */
+}
+
+
+
+/* Format for Product Description */
+.item-description {
+  text-align: justify;
+}
+
+
+
+
+
+.whatsapp-link {
+  color: #3a8bcd;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.whatsapp-cta {
+  display: inline-block;
+  background-color: #4285F4;
+  color: white;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-family: 'Roboto', sans-serif;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.whatsapp-cta:hover {
+  background-color: #3367D6;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* === Responsive Breakpoints === */
+
+/* Tablet: 2 per row */
+@media (max-width: 991px) and (min-width: 601px) {
+  .product-box {
+    flex: 1 1 calc(45% - 20px);
+    max-width: 220px;
+  }
+}
+
+/* Small mobile: 1 per row */
+@media (max-width: 600px) {
+  .product-box {
+    flex: 1 1 100%;
+    max-width: 300px;
+  }
+}
+
+
+
 
 /* === Swiper Modal === */
 .swiper-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
+  display: none; /* hidden by default */
+  position: fixed;
+  z-index: 1000;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.85);
+  align-items: center;
+  justify-content: center;
 }
 
-.swiper-modal-content {
-    position: relative;
-    width: 90%;
-    max-width: 600px;
-    height: 90%;
-    background-color: #000;
-    border-radius: 10px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+.swiper-container {
+  flex: 0 0 auto;      /* don’t stretch to fill modal */
+  width: 100%;
+  height: auto;
+  max-height: 70vh;    /* ensures images never explode */
 }
+
 
 .swiper-close-button {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 16px;
-    background: #f44336;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    z-index: 1000;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  background: #f44336;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 1010;
 }
-
 .swiper-close-button:hover {
-    background: #d32f2f;
+  background: #d32f2f;
 }
 
-.main-swiper {
-    width: 100%;
-    height: 100%;
+.swiper-container {
+  flex: 1;
+  width: 100%;
+}
+.swiper-container img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  max-height: 70vh;
 }
 
-.main-swiper img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
 
 .swiper-pagination {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
 }
 
 .swiper-pagination-bullet {
-    background: grey;
-    opacity: 0.6;
-    width: 10px;
-    height: 10px;
+  width: 10px;
+  height: 10px;
+  background: grey;
+  opacity: 0.6;
+  border-radius: 50%;
 }
-
 .swiper-pagination-bullet-active {
-    background: #007bff;
-    opacity: 1;
+  background: #3a8bcd;
+  opacity: 1;
 }
 
-.swiper-close-area {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+
+/* Product info styling below swiper */
+.swiper-product-info {
+  background: #fff;
+  color: #333;
+  padding: 15px 20px;
+  text-align: left;
+  font-size: 15px;
+  line-height: 1.5;
 }
+
+.swiper-product-info p {
+  margin: 5px 0;
+}
+
+/* Make modal content stack correctly */
+.swiper-modal-content {
+  display: flex;
+  flex-direction: column;
+  height: auto;        /* expand naturally to fit text */
+  max-height: none;    /* optional: no artificial limit */
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+
+
+
 
 /* === Footer === */
 .footer {
@@ -317,7 +430,7 @@ main, .featured-items, .banner {
     outline-offset: -10px;
     border-radius: 12px;
     padding-top: 20px;
-    margin-top: -70px;
+    margin-top: -5px; /* -70px */
 }
 
 .footer .footer-menu ul {
@@ -369,3 +482,10 @@ main, .featured-items, .banner {
     font-size: 12px;
     opacity: 0.9;
 }
+
+
+
+/* Smooth scroll for anchor links  */
+html {
+  scroll-behavior: smooth;
+}   
