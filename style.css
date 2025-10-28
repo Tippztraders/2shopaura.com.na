@@ -39,8 +39,8 @@ main, .featured-items, .banner {
 .header {
     position: relative;
     width: 100%;
-    height: 343px;   /* 40vh */
-    min-height: 250px;
+    height: 343px;   /* 343 */
+    min-height: 343px;  /* 250 */
     overflow: hidden;
 }
 
